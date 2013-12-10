@@ -4,8 +4,10 @@ var csv = require('csv');
 var fs = require('fs');
 var errcount = 0;
 
+gm.config({'stagger-time':3000});
+
 var getCoords = function(address, callback) {
-    setTimeout( function() {
+    //setTimeout( function() {
     gm.geocode(address, function(err, res){
         console.log(res.status);
         if (err) { console.log(err); console.log(errcount++); }
@@ -13,12 +15,9 @@ var getCoords = function(address, callback) {
         var loc = JSON.stringify(res.results[0].geometry.location);
         console.log(loc);
         callback(loc);}
-    })},2000);
+    });//,2000);
 };
 
-/*gm.reverseGeocode(gm.checkAndConvertPoint([41.850033, -87.6500523]), function(err, data){
-        util.puts(JSON.stringify(data));
-        });*/
 
 csv()
 .from.path('../public/csv/locations.csv', {
