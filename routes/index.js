@@ -4,7 +4,6 @@ var fs = require('fs');
 var csv = require('csv');
 var request = require('request');
 
-
 /*
  * GET home page.
  */
